@@ -1,4 +1,4 @@
-package com.example.trivia.Retrofit;
+package com.example.trivia.retrofit;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClientInstance {
 
     // Declare and Init our base url
-    public static final String base_url = "http://shibe.online/api/";
+    private static final String BASE_URL = "https://opentdb.com/";
 
     // Declare Retrofit object
     private static Retrofit retrofit;
@@ -19,7 +19,7 @@ public class RetrofitClientInstance {
 
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl(base_url)
+                    .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
