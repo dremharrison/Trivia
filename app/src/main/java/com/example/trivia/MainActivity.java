@@ -1,21 +1,29 @@
 package com.example.trivia;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.trivia.pojo.ResultsItem;
 import com.example.trivia.pojo.TriviaResponse;
 import com.example.trivia.retrofit.QuestionService;
 import com.example.trivia.retrofit.RetrofitClientInstance;
+import com.example.trivia.utils.GameUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,12 +32,17 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivitys";
     QuestionFragment questionFragment;
-    TextView question;
+    Spinner categorySpinner, difficultySpinner, numOfQuestionsSpinner;
+    String difficultySpinnerText, categorySpinnerText, numOfQuestionsSpinnerText, categorySpinnerTextNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        numOfQuestionsSpinner = findViewById(R.id.spinner_numOfQuestions);
+        categorySpinner = findViewById(R.id.spinner_category);
+        difficultySpinner = findViewById(R.id.spinner_difficulty);
 
         //Declare and Init Fragment Manager
         FragmentManager manager = getSupportFragmentManager();
@@ -43,8 +56,6 @@ public class MainActivity extends AppCompatActivity {
         //Add Fragment
         transaction.add(R.id.frame_layout, questionFragment, "QuestionFragment" ).commit();
 
-//        retrofitRequest(10, "multiple");
-
         findViewById(R.id.btn_start_game).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,7 +64,26 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.iv_logo).setVisibility(View.GONE);
                 findViewById(R.id.spinner_category).setVisibility(View.GONE);
                 findViewById(R.id.spinner_difficulty).setVisibility(View.GONE);
+                findViewById(R.id.spinner_numOfQuestions).setVisibility(View.GONE);
                 findViewById(R.id.frame_layout).setVisibility(View.VISIBLE);
+
+                numOfQuestionsSpinnerText = numOfQuestionsSpinner.getSelectedItem().toString();
+                categorySpinnerText = categorySpinner.getSelectedItem().toString();
+                difficultySpinnerText = difficultySpinner.getSelectedItem().toString();
+                Log.d(TAG, "onCreate: numOfQuestions " + numOfQuestionsSpinnerText);
+                Log.d(TAG, "onCreate: category " + categorySpinnerText);
+                Log.d(TAG, "onCreate: difficulty " + difficultySpinnerText);
+
+                categorySpinnerTextNumber = GameUtils.getCategoryNumber(categorySpinnerText);
+
+                Log.d(TAG, "onClick: " + categorySpinnerTextNumber);
+
+
+                Bundle bundle = new Bundle();
+                bundle.putString("numOfQuestions", numOfQuestionsSpinnerText);
+                bundle.putString("category", categorySpinnerTextNumber);
+                bundle.putString("difficulty", difficultySpinnerText);
+                questionFragment.getQuestions(bundle);
 
             }
         });

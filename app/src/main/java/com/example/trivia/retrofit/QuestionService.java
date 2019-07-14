@@ -8,5 +8,5 @@ import retrofit2.http.Query;
 
 public interface QuestionService {
     @GET("/api.php")
-    Call<TriviaResponse> loadQuestion(@Query("amount") int amount, @Query("type") String type);
+    Call<TriviaResponse> loadQuestion(@Query("amount") String amount, @Query("category") String category, @Query("difficulty") String difficulty, @Query("type") String type );
 }

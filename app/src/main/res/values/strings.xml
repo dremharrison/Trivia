@@ -2,19 +2,18 @@
     <string name="app_name">Trivia</string>
     <string name="category_prompt">Category</string>
     <string-array name="category_arrays">
-        <item>Category</item>
         <item>Animals</item>
         <item>Art</item>
         <item>Celebrities</item>
-        <item>Entertainment:Books</item>
-        <item>Entertainment:Cartoon and Animations</item>
-        <item>Entertainment:Comics</item>
-        <item>Entertainment:Film</item>
-        <item>Entertainment:Japanese Anime and Menga</item>
-        <item>Entertainment:Music</item>
-        <item>Entertainment:Musical and Theatres</item>
-        <item>Entertainment:Television</item>
-        <item>Entertainment:Video Games</item>
+        <item>Entertainment: Books</item>
+        <item>Entertainment: Cartoon and Animations</item>
+        <item>Entertainment: Comics</item>
+        <item>Entertainment: Film</item>
+        <item>Entertainment: Japanese Anime and Menga</item>
+        <item>Entertainment: Music</item>
+        <item>Entertainment: Musical and Theatres</item>
+        <item>Entertainment: Television</item>
+        <item>Entertainment: Video Games</item>
         <item>General Knowledge</item>
         <item>Geography</item>
         <item>History</item>
@@ -29,10 +28,17 @@
 
     <string name="difficulty_prompt">Difficulty</string>
     <string-array name="difficulty_arrays">
-        <item>Difficulty</item>
         <item>Easy</item>
         <item>Medium</item>
         <item>Hard</item>
+    </string-array>
+
+    <string name="num_prompt">How Many Questions?</string>
+    <string-array name="numOfQuestions_arrays">
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
