@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         //Add Fragment
         transaction.add(R.id.frame_layout, questionFragment, "QuestionFragment" ).commit();
 
-        retrofitRequest(10, "multiple");
+//        retrofitRequest(10, "multiple");
 
         findViewById(R.id.btn_start_game).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,45 +59,45 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void retrofitRequest(int count, String type) {
-        final List answers = new ArrayList<String>();
-
-
-        // 1. Declare GiphyService and Init using RetrofitClientInstance
-        QuestionService questionService = RetrofitClientInstance.getRetrofit().create(QuestionService.class);
-
-        // Declare GiphyService Return type and Init using the GiphyService from step 1
-        Call<TriviaResponse> triviaResponseCall = questionService.loadQuestion(count, type);
-
-        // 3. Use the giphyCall from step 2 and call the .enqueue method
-        triviaResponseCall.enqueue(new Callback<TriviaResponse>() {
-            @Override
-            public void onResponse(Call<TriviaResponse> call, retrofit2.Response<TriviaResponse> response) {
-
-                if (response.isSuccessful()){
-                    ResultsItem resultsItem = response.body().getResults().get(0);
-                    Log.d(TAG, "onResponse: Success" + response.body());
-                    String correctAnswer = resultsItem.getCorrectAnswer();
-                    answers.addAll(resultsItem.getIncorrectAnswers());
-                    answers.add(correctAnswer);
-                    String question = resultsItem.getQuestion();
-                    sendQuestionAndAnswers(question, correctAnswer, answers);
-
-                } else {
-                    Log.d(TAG, "onResponse: Fail");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<TriviaResponse> call, Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getLocalizedMessage());
-            }
-        });
-
-    }
+//    public void retrofitRequest(int count, String type) {
+//        final List answers = new ArrayList<String>();
+//
+//
+//        // 1. Declare GiphyService and Init using RetrofitClientInstance
+//        QuestionService questionService = RetrofitClientInstance.getRetrofit().create(QuestionService.class);
+//
+//        // Declare GiphyService Return type and Init using the GiphyService from step 1
+//        Call<TriviaResponse> triviaResponseCall = questionService.loadQuestion(count, type);
+//
+//        // 3. Use the giphyCall from step 2 and call the .enqueue method
+//        triviaResponseCall.enqueue(new Callback<TriviaResponse>() {
+//            @Override
+//            public void onResponse(Call<TriviaResponse> call, retrofit2.Response<TriviaResponse> response) {
+//
+//                if (response.isSuccessful()){
+//                    ResultsItem resultsItem = response.body().getResults().get(0);
+//                    Log.d(TAG, "onResponse: Success" + response.body());
+//                    String correctAnswer = resultsItem.getCorrectAnswer();
+//                    answers.addAll(resultsItem.getIncorrectAnswers());
+//                    answers.add(correctAnswer);
+//                    String question = resultsItem.getQuestion();
+//                    sendQuestionAndAnswers(question, correctAnswer, answers);
+//
+//                } else {
+//                    Log.d(TAG, "onResponse: Fail");
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<TriviaResponse> call, Throwable t) {
+//                Log.d(TAG, "onFailure: " + t.getLocalizedMessage());
+//            }
+//        });
+//
+//    }
 
     public void sendQuestionAndAnswers(String question, String correctAnswer, List<String> answers) {
-        questionFragment.displayQuestionAndAnswers(question, correctAnswer, answers);
+
     }
 }
 
