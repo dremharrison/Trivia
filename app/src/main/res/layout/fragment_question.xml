@@ -30,24 +30,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_right"
+        android:id="@+id/tv_gameover"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Right!"
-        android:visibility="gone"
-        android:textColor="@android:color/holo_green_dark"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@id/tv_question"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_wrong"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="Wrong Answer"
+        android:text="Game Over!"
         android:visibility="gone"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="24sp"
@@ -171,13 +158,26 @@
 
 
     <Button
-        android:id="@+id/btn_quit"
+    android:id="@+id/btn_quit"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="5dp"
+    android:layout_marginBottom="5dp"
+    android:background="@color/triviaRed"
+    android:text="quit"
+    android:textColor="@android:color/white"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btn_play_again"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
         android:background="@color/triviaRed"
-        android:text="quit"
+        android:text="play again!"
+        android:visibility="gone"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

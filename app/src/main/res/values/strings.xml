@@ -26,20 +26,6 @@
         <item>Vehicles</item>
     </string-array>
 
-    <string name="difficulty_prompt">Difficulty</string>
-    <string-array name="difficulty_arrays">
-        <item>Easy</item>
-        <item>Medium</item>
-        <item>Hard</item>
-    </string-array>
-
-    <string name="num_prompt">How Many Questions?</string>
-    <string-array name="numOfQuestions_arrays">
-        <item>5</item>
-        <item>10</item>
-        <item>15</item>
-        <item>20</item>
-    </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
