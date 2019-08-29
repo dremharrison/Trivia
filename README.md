@@ -1,7 +1,8 @@
 # Trivia
 
 ## Language/Libraries Implemented:
-Java,
-Open Trivia DB api,
-Retrofit2,
-CardView
+Java<br/>
+Open Trivia DB api<br/>
+Retrofit2<br/>
+CardView<br/>
+EventBus<br/>
